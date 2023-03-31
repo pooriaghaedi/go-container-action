@@ -4,8 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: K8sGPT
-        id: K8sGPT
+      - name: K8s GPT 
+        id: k8sgpt
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
         
@@ -17,5 +17,4 @@ jobs:
 
       - name: Check outputs
         run: |
-          echo "${{ steps.K8sGPT.outputs.myOutput }}"
-
+          echo "${{ steps.k8sgpt.outputs.myOutput }}"
