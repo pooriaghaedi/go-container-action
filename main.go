@@ -27,7 +27,7 @@ func marshalYaml(filename string) ([]byte, error) {
 
 func main() {
 
-	filename := "//Users/poori/.k8sgpt.yaml"
+	filename := "/root/.k8sgpt.yaml"
 	_,err := os.Create(filename)
 	if err != nil {
     	 fmt.Println( err)
@@ -41,7 +41,7 @@ func main() {
         log.Fatal(err)
     }
 
-	k8sfilename := "//Users/poori/.kube/config"
+	k8sfilename := "/root/.kube/config"
 	err = os.WriteFile(k8sfilename, []byte(os.Getenv("K8SCONFIG")), 0644)
     if err != nil {
         log.Fatal(err)
