@@ -16,4 +16,4 @@ jobs:
 
       - name: Check outputs
         run: |
-          echo "${{ steps.selftest.outputs.myOutput }}"
+          echo "{name}={value}" >> $GITHUB_OUTPUT
