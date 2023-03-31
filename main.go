@@ -48,6 +48,8 @@ func main() {
     }
 
 	cmd := exec.Command("./k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
+	output, _ := cmd.CombinedOutput()
+	fmt.Println(fmt.Sprintf(`::set-output name=myOutput::%s`, output))
     if err := cmd.Run(); err != nil{
        fmt.Println(err)
     }
