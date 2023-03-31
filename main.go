@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"regexp"
 
 	"gopkg.in/yaml.v3"
 )
@@ -59,8 +60,12 @@ func main() {
 
 	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
 	output, _ := cmd.CombinedOutput()
-	fmt.Println("myOutput=" + string(output) )
-	os.Setenv("GITHUB_OUTPUT", "myOutput=" + string(output) )
+
+	re := regexp.MustCompile("(?m)[\r\n]+^.*substring.*$")
+    res := re.ReplaceAllString(string(output), "")
+
+	fmt.Println("myOutput=" + res )
+	os.Setenv("GITHUB_OUTPUT", "myOutput=" + res )
     if err := cmd.Run(); err != nil{
        fmt.Println(err)
     }
