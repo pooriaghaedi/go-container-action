@@ -57,7 +57,7 @@ func main() {
         log.Fatal(err)
     }
 
-	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod", "--output=json")
+	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
 	output, _ := cmd.CombinedOutput()
 	fmt.Println("myOutput=" + string(output) )
 	os.Setenv("GITHUB_OUTPUT", "myOutput=" + string(output) )
