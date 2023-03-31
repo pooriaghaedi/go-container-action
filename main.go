@@ -59,7 +59,8 @@ func main() {
 
 	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod", "--output=json")
 	output, _ := cmd.CombinedOutput()
-	fmt.Println(fmt.Sprintf(`myOutput=%s`, output))
+	// fmt.Println(fmt.Sprintf(`myOutput=%s`, output))
+	os.Setenv("GITHUB_ENV", fmt.Sprintf(`myOutput=%s`, output))
     if err := cmd.Run(); err != nil{
        fmt.Println(err)
     }
