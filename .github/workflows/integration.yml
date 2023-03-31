@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Self test
+      - name: K8sGPT
         id: selftest
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
@@ -16,4 +16,4 @@ jobs:
 
       - name: Check outputs
         run: |
-          echo "{name}={value}" >> $GITHUB_OUTPUT
+          echo ${{ steps.K8sGPT.outputs.Result }} 
