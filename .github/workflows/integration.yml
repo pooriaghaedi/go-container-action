@@ -4,15 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-      - uses: actions/checkout@master
-      - name: Create Kube Config file
-        run: |
-            echo $KUBE_CONFIG > ~/.kube/config 
-        shell: bash
-        env:
-          KUBE_CONFIG : ${{secrets.KUBE_CONFIG}}
-          
       - name: Self test
         id: selftest
         # Put your action repo here
@@ -20,6 +11,8 @@ jobs:
         env:
           BACKENDTYPE: openai
           OAIKEY: ${{ secrets.OAIKEY }}
+          KUBE_CONFIG : ${{secrets.KUBE_CONFIG}}
+
 
       - name: Check outputs
         run: |

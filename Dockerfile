@@ -13,7 +13,7 @@ FROM golang:1.20.2
 WORKDIR /app
 COPY --from=builder /app/ /app/
 
-RUN mkdir /root/.kube/ 
+RUN mkdir $HOME/.kube/ && echo $KUBE_CONFIG > $HOME/.kube/
 
 
 ENTRYPOINT ["/app/k8sActions"]
