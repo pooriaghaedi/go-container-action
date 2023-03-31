@@ -21,7 +21,7 @@ func marshalYaml(filename string) ([]byte, error) {
     if err != nil {
         return nil, fmt.Errorf("in file %q: %w", filename, err)
     }
-	fmt.Println(string(out[:]))
+	// fmt.Println(string(out[:]))
     return out, err
 }
 
@@ -49,7 +49,7 @@ func main() {
 
 	cmd := exec.Command("./k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
 	output, _ := cmd.CombinedOutput()
-	fmt.Println(fmt.Sprintf(`::set-output name=myOutput::%s`, output))
+	fmt.Println(fmt.Sprintf(`::set-output name=myOutput::%s`, string(output)))
     if err := cmd.Run(); err != nil{
        fmt.Println(err)
     }
