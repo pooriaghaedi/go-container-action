@@ -8,7 +8,7 @@ inputs:
   OAIKEY:
     description: "Open AI generated key"
     default: "OAIKEY"
-  KUBERNETES_MASTER:
+  KUBE_CONFIG:
     description: "K8s Config File"
     default: ""
 outputs:
