@@ -8,12 +8,14 @@ jobs:
         id: K8sGPT
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
+        
         env:
           BACKENDTYPE: openai
           OAIKEY: ${{ secrets.OAIKEY }}
           KUBE_CONFIG : ${{secrets.KUBE_CONFIG}}
+        
 
       - name: Check outputs
         run: |
-          echo "${{ steps.K8sGPT.outputs.Result }}"
+          echo "${{ steps.K8sGPT.outputs.myOutput }}"
 
