@@ -10,7 +10,7 @@ jobs:
 
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
-        with:
+        env:
           BACKENDTYPE: BACKENDTYPE
           OAIKEY: "openai"
           K8SCONFIG: K8SCONFIG

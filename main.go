@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 
 	"gopkg.in/yaml.v3"
 )
@@ -44,5 +45,10 @@ func main() {
 	err = os.WriteFile(k8sfilename, []byte(os.Getenv("K8SCONFIG")), 0644)
     if err != nil {
         log.Fatal(err)
+    }
+
+	cmd := exec.Command("./k8sgpt analyze --explain  --namespace=default   --filter=Pod")
+    if err := cmd.Run(); err != nil{
+       fmt.Println(err)
     }
 }
