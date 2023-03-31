@@ -13,7 +13,7 @@ jobs:
         env:
           BACKENDTYPE: openai
           OAIKEY: ${{ secrets.OAIKEY }}
-          K8SCONFIG: ${{ secrets.K8SCONFIG }}
+          KUBERNETES_MASTER: ${{ secrets.K8SCONFIG }}
 
       - name: Check outputs
         run: |
