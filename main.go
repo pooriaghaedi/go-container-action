@@ -52,7 +52,7 @@ func main() {
 	}
 	k8sfilename := os.Getenv("HOME")+"/.kube/config"
 	_,err = os.Create(os.Getenv("HOME")+"/.kube/")
-	err = os.WriteFile(k8sfilename, []byte(os.Getenv("HOME")), 0644)
+	err = os.WriteFile(k8sfilename, []byte(os.Getenv("KUBE_CONFIG")), 0644)
     if err != nil {
         log.Fatal(err)
     }
