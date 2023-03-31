@@ -14,4 +14,5 @@ COPY --from=builder /app/ /app/
 
 RUN mkdir /root/.kube/ && cp k8sgptconfig /root/.kube/config && cp k8sgpt.yaml /root/.k8sgpt.yaml
 
+
 ENTRYPOINT ["./k8sgpt", "analyze", "--explain ", "--namespace=default", " --filter=Pod"]
