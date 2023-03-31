@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -27,7 +28,7 @@ func marshalYaml(filename string) ([]byte, error) {
 
 func main() {
 
-	filename := "/root/.k8sgpt.yaml"
+	filename := os.Getenv("HOME")+"/.k8sgpt.yaml"
 	_,err := os.Create(filename)
 	if err != nil {
     	 fmt.Println( err)
@@ -41,9 +42,17 @@ func main() {
         log.Fatal(err)
     }
 
+
+	path :=  os.Getenv("HOME")+"/.kube"
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
+		err := os.Mkdir(path, os.ModePerm)
+		if err != nil {
+			log.Println(err)
+		}
+	}
 	k8sfilename := os.Getenv("HOME")+"/.kube/config"
 	_,err = os.Create(os.Getenv("HOME")+"/.kube/")
-	err = os.WriteFile(k8sfilename, []byte(os.Getenv("KUBE_CONFIG")), 0644)
+	err = os.WriteFile(k8sfilename, []byte(os.Getenv("HOME")), 0644)
     if err != nil {
         log.Fatal(err)
     }
