@@ -20,6 +20,7 @@ func marshalYaml(filename string) ([]byte, error) {
     if err != nil {
         return nil, fmt.Errorf("in file %q: %w", filename, err)
     }
+	fmt.Println(string(out[:]))
     return out, err
 }
 
