@@ -1,15 +1,16 @@
-FROM golang:1.21 as builder
+FROM golang:1.20.2 as builder
 
 WORKDIR /app
-COPY main.go /app
+COPY ./ /app
 
-RUN go run main.go
+RUN go get . && go run main.go
 RUN wget -qO- https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.1.4/k8sgpt_Linux_x86_64.tar.gz  | tar xvzf -
 
 
-FROM gcr.io/distroless/static
+FROM golang:1.20.2
 
-COPY --from=builder /app/k8sgpt* /app
+WORKDIR /app
+COPY --from=builder /app/ /app/
 
 RUN mkdir /root/.kube/ && cp k8sgptconfig /root/.kube/config && cp k8sgpt.yaml /root/.k8sgpt.yaml
 
