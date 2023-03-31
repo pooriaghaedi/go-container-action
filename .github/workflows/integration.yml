@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: K8sGPT
-        id: selftest
+        id: K8sGPT
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
         env:
@@ -13,7 +13,7 @@ jobs:
           OAIKEY: ${{ secrets.OAIKEY }}
           KUBE_CONFIG : ${{secrets.KUBE_CONFIG}}
 
-
       - name: Check outputs
         run: |
-          echo ${{ steps.K8sGPT.outputs.Result }} 
+          echo "${{ steps.K8sGPT.outputs.Result }}"
+
