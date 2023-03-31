@@ -13,7 +13,7 @@ FROM golang:1.20.2
 WORKDIR /app
 COPY --from=builder /app/ /app/
 
-RUN mkdir /root/.kube/ && cp k8sgptconfig /root/.kube/config && cp k8sgpt.yaml /root/.k8sgpt.yaml
+RUN mkdir /root/.kube/ 
 
 
 ENTRYPOINT ["./k8sActions"]
