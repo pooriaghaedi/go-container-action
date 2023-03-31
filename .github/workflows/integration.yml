@@ -11,9 +11,9 @@ jobs:
         # Put your action repo here
         uses: pooriaghaedi/go-container-action@master
         with:
-          backendType: BACKENDTYPE
-          oaiKey: "openai"
-          k8sConfig: K8SCONFIG
+          BACKENDTYPE: BACKENDTYPE
+          OAIKEY: "openai"
+          K8SCONFIG: K8SCONFIG
 
       - name: Check outputs
         run: |
