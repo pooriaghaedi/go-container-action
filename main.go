@@ -41,11 +41,11 @@ func main() {
         log.Fatal(err)
     }
 
-	k8sfilename := "/root/.kube/config"
-	err = os.WriteFile(k8sfilename, []byte(os.Getenv("K8SCONFIG")), 0644)
-    if err != nil {
-        log.Fatal(err)
-    }
+	// k8sfilename := "/root/.kube/config"
+	// err = os.WriteFile(k8sfilename, []byte(os.Getenv("K8SCONFIG")), 0644)
+    // if err != nil {
+    //     log.Fatal(err)
+    // }
 
 	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
 	output, _ := cmd.CombinedOutput()

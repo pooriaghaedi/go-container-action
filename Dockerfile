@@ -17,3 +17,7 @@ RUN mkdir /root/.kube/
 
 
 ENTRYPOINT ["/app/k8sActions"]
+
+
+
+
