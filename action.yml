@@ -2,9 +2,15 @@ name: "Go Container Action Template"
 description: "Get started with Go Container actions"
 author: "Jacob Tomlinson"
 inputs:
-  myInput:
-    description: "Input to use"
-    default: "world"
+  backendType:
+    description: "Type of backend"
+    default: "BACKENDTYPE"
+  oaiKey:
+    description: "Open AI generated key"
+    default: "OAIKEY"
+  k8sConfig:
+    description: "K8s Config File"
+    default: "K8SCONFIG"
 outputs:
   myOutput:
     description: "Output from the action"
