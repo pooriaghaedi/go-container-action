@@ -16,4 +16,4 @@ COPY --from=builder /app/ /app/
 RUN mkdir /root/.kube/ 
 
 
-ENTRYPOINT ["./k8sActions"]
+ENTRYPOINT ["/app/k8sActions"]

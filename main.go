@@ -47,7 +47,7 @@ func main() {
         log.Fatal(err)
     }
 
-	cmd := exec.Command("./k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
+	cmd := exec.Command("/app/k8sgpt" , "analyze" , "--explain",  "--namespace=default" , "--filter=Pod")
 	output, _ := cmd.CombinedOutput()
 	fmt.Println(fmt.Sprintf(`::set-output name=myOutput::%s`, string(output)))
     if err := cmd.Run(); err != nil{
