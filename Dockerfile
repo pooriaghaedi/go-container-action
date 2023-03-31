@@ -1,5 +1,6 @@
 FROM golang:1.20.2 as builder
 
+ARG BACKENDTYPE OAIKEY K8SCONFIG
 WORKDIR /app
 COPY ./ /app
 
